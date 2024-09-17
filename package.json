@@ -1,6 +1,6 @@
 {
   "name": "api-autoresbot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple API client to fetch data from REST API using an API key",
   "main": "src/index.js",
   "scripts": {
