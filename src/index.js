@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const { handleError, buildHeaders, buildQueryParams } = require('./utils');
 
-const BASE_URL = 'https://api.autoresbot.com';
+const BASE_URL = 'https://api.autoresbot.com'; // http://localhost:3000 https://api.autoresbot.com
+const BASE_UPLOADER = 'https://autoresbot.com'; // https://autoresbot.com
 
 class ApiAutoresbot {
   constructor(apiKey = null) {
@@ -86,16 +87,16 @@ class ApiAutoresbot {
       form.append('file', fs.createReadStream(filePath));
 
       const headers = {
-        ...form.getHeaders(),
-        Authorization: `Bearer ${this.apiKey}`,  // Sertakan API key dalam header jika diperlukan
+        ...form.getHeaders()
       };
 
-      const response = await axios.post(`${BASE_URL}/api/upload`, form, {
+      const response = await axios.post(`${BASE_UPLOADER}/tmp-files/upload`, form, {
         headers,
       });
 
       return response.data;
     } catch (error) {
+      console.log(error)
       handleError(error);
     }
   }
